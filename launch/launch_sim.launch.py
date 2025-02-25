@@ -5,6 +5,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
+from launch.actions import TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
@@ -36,11 +37,23 @@ def generate_launch_description():
                                    '-entity', 'my_bot'],
                         output='screen')
 
+    diff_drive_spawner = Node(
+    package="controller_manager",
+    executable="spawner.py",
+    arguments=["diff_cont"],
+    )
 
+    joint_broad_spawner = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["joint_broad"],
+    )
 
     # Launch them all!
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
+        diff_drive_spawner,
+        joint_broad_spawner,
     ])
