@@ -1,0 +1,4 @@
+#Launch Gazebo with NaviX                                                            
+Source the work space: source ~/ros2/dev_ws/install/setup.bash                                              
+Launch Gazebo: ros2 launch my_bot launch_sim.launch.py                                              
+Control NaviX: ros2 run teleop_twist_keyboard teleop_twist_keyboard 
