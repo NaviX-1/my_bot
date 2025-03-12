@@ -54,6 +54,11 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        diff_drive_spawner,
-        joint_broad_spawner,
+        TimerAction(
+        period=2.0,  # 2-second delay before starting controllers
+        actions=[
+            diff_drive_spawner,
+            joint_broad_spawner,
+        ]
+    ),
     ])
